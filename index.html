@@ -94,6 +94,8 @@
                         pill = 'primary';
                         if (score <= 0.2) {
                             pill = 'success';
+                        } else if (score >= 0.68) {
+                            pill = 'danger';
                         }
                         $resultsUl.append(`
                             <li class="list-group-item">
