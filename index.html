@@ -41,7 +41,7 @@
     </div>
     <footer>
         <div class="float-right">
-            v0.2.0
+            v0.3.1
         </div>
     </footer>
 
@@ -80,13 +80,24 @@
             let flRegistryArray = [];
 
             registryArray.forEach(e => {
+                rId = null;
+
+                tabSplit = e.split('\t');
+                if (!isNaN(tabSplit[0])) {
+                    rId = tabSplit[0];
+                    searchString = tabSplit[1];
+                } else {
+                    searchString = e;
+                }
+
                 splitArray = e.split(' ');
+
                 lf = splitArray[1] + " " + splitArray[0];
 
-
                 flRegistryArray.push({
-                    "fl": e,
-                    "lf": lf
+                    "fl": searchString,
+                    "lf": lf,
+                    "rid": rId
                 })
             })
 
@@ -119,9 +130,15 @@
                         } else if (score >= 0.68) {
                             pill = 'danger';
                         }
+
+                        regId = '';
+                        if (e.item.rid) {
+                            regId = ` <span class='badge badge-warning'>[${e.item.rid}]</span> `;
+                        }
+
                         $resultsUl.append(`
                             <li class="list-group-item">
-                                <span class="badge badge-warning">${e.refIndex+1}</span>
+                                <span class="badge badge-warning">${e.refIndex+1}</span>${regId}
                                 ${e.item.fl}
                                 <span class="badge badge-${pill}">${score}</span></li>`);
                     }
