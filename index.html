@@ -41,7 +41,7 @@
     </div>
     <footer>
         <div class="float-right">
-            v0.1.10
+            v0.2.0
         </div>
     </footer>
 
@@ -65,16 +65,34 @@
         });
 
         const fuse = new Fuse([], {
+            keys: [
+                "fl",
+                'lf'
+            ],
             includeScore: true}
         );
 
-        let registryArray = [];
-
         function convertArray(e) {
+            let registryArray = [];
             registryArray = [];
             registryArray = $(e.target).val().split(/\r?\n/);
 
-            fuse.setCollection(registryArray);
+            let flRegistryArray = [];
+
+            registryArray.forEach(e => {
+                splitArray = e.split(' ');
+                lf = splitArray[1] + " " + splitArray[0];
+
+
+                flRegistryArray.push({
+                    "fl": e,
+                    "lf": lf
+                })
+            })
+
+            console.log(flRegistryArray);
+
+            fuse.setCollection(flRegistryArray);
         }
 
         const spinner = "<div><center><div class='spinner-border' role='status'><span class='sr-only'>Loading...</span></div></center></div>";
@@ -104,7 +122,7 @@
                         $resultsUl.append(`
                             <li class="list-group-item">
                                 <span class="badge badge-warning">${e.refIndex+1}</span>
-                                ${e.item}
+                                ${e.item.fl}
                                 <span class="badge badge-${pill}">${score}</span></li>`);
                     }
 
