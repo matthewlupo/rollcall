@@ -1,4 +1,7 @@
-# rollcall
+# Rollcall - a tool for fuzzy name searching / matching
+### Developed as an assistance tool for SAFER Ukraine St.Jude's effort
+
+Check out the live version on https://matthewlupo.github.io/roll-call/
 
 # Example Names
 ```
