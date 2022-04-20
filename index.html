@@ -2,13 +2,12 @@
 
 <html lang="en">
 <head>
-  <meta charset="utf-8">
+    <meta charset="utf-8">
 
-  <title>Roll Call</title>
+    <title>Roll Call</title>
 
-  <link rel="stylesheet" href="css/styles.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 </head>
 <body>
     <br>
@@ -47,7 +46,7 @@
     </div>
     <footer>
         <div class="float-right">
-            v0.4.2
+            v0.4.3
         </div>
     </footer>
 
@@ -56,15 +55,6 @@
     <script src="js/scripts.js"></script>
 
     <script>
-        // const fuse = new Fuse(characters, {
-        //     keys: [
-        //         'name',
-        //         'company',
-        //         'species'
-        //     ],
-        //     includeScore: true
-        // })
-
         $(document).ready(function() {
             $('#registry').on('input', convertArray);
             $('#search').on('input', search);
@@ -85,7 +75,6 @@
             $('#range').text(accuracyVal);
             $('#range').removeClass().addClass(`badge ${badge}`);
             $('#search').trigger('input');
-            // search($('#search'));
         }
 
         const fuse = new Fuse([], {
@@ -93,8 +82,8 @@
                 "fl",
                 'lf'
             ],
-            includeScore: true}
-        );
+            includeScore: true
+        });
 
         function convertArray(e) {
             let registryArray = [];
@@ -124,9 +113,6 @@
                     "rid": rId
                 })
             })
-
-            // console.log(flRegistryArray);
-
             fuse.setCollection(flRegistryArray);
         }
 
@@ -165,7 +151,9 @@
                                 <li class="list-group-item">
                                     <span class="badge badge-warning">${e.refIndex+1}</span>${regId}
                                     ${e.item.fl}
-                                    <span class="badge badge-${pill}">${score}</span></li>`);
+                                    <span class="badge badge-${pill}">${score}</span>
+                                </li>
+                            `);
                         }
 
                     })
